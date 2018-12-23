@@ -3,48 +3,49 @@
         <el-col :span="24">
             <el-row>
                 <el-col :span="24" style="text-align: right;">
-                    <el-button type="primary">Crear Profesor</el-button>
+                    <el-button type="primary">Crear Materia</el-button>
                 </el-col>
             </el-row>
             <el-row style="margin-top: 10px;">
                 <el-col :span="24">
-
+                    
                     <el-table
                         :data="tableData"
-                        style="width: 100%!important;">
+                        style="width: 100%">
 
                         <el-table-column
                             label="Nombre">
                             <template slot-scope="scope">
-                                {{ scope.row.nombre }}
+                                <span style="margin-left: 10px">{{ scope.row.nombre }}</span>
                             </template>
                         </el-table-column>
 
                         <el-table-column
-                            label="Apellido">
+                            label="Curos">
                             <template slot-scope="scope">
-                                {{ scope.row.apellido }}
+                                <span style="margin-left: 10px">{{ scope.row.curso }}</span>
                             </template>
                         </el-table-column>
 
                         <el-table-column
-                            label="Sexo">
+                            label="Seccion">
                             <template slot-scope="scope">
-                                {{ scope.row.sexo }}
+                                <span style="margin-left: 10px">{{ scope.row.seccion }}</span>
                             </template>
                         </el-table-column>
 
                         <el-table-column
-                            label="Direccion">
+                            label="Nivel">
                             <template slot-scope="scope">
-                                {{ scope.row.direccion }}
+                                <span style="margin-left: 10px">{{ scope.row.nivel }}</span>
                             </template>
                         </el-table-column>
-
+                        
                         <el-table-column
-                            label="Telefono">
+                            label="Creado En">
                             <template slot-scope="scope">
-                                {{ scope.row.telefono }}
+                                <i class="el-icon-time"></i>
+                                <span style="margin-left: 10px">{{ scope.row.date }}</span>
                             </template>
                         </el-table-column>
 
@@ -75,59 +76,56 @@
 
 <script>
 export default {
-    name: 'ProfesorLista',
+    name: 'CursoLista',
     data() {
         return {
             pageNumber: 5,
             tableData: [
                 {
                     date: '2016-05-03',
-                    nombre: 'Pedro',
-                    apellido: 'Hernandez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
+                    nombre: 'Matematicas',
+                    seccion: 'A',
+                    nivel: 'Primaria',
+                    curso: '1 ero',
                 }, 
                 {
                     date: '2016-05-03',
-                    nombre: 'Diogenes',
-                    apellido: 'Martinez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
+                    nombre: 'Ciencias Sociales',
+                    seccion: 'A',
+                    nivel: 'Primaria',
+                    curso: '1 ero',
                 },
                 {
                     date: '2016-05-03',
-                    nombre: 'Gloria',
-                    apellido: 'Estefan',
-                    sexo: 'Femenino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
+                    nombre: 'Matematicas',
+                    seccion: 'B',
+                    nivel: 'Primaria',
+                    curso: '2 do',
                 },
                 {
                     date: '2016-05-03',
-                    nombre: 'Hector',
-                    apellido: 'Fernandez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
+                    nombre: 'Dibujo',
+                    seccion: 'A',
+                    nivel: 'Inicial',
+                    curso: '1 ero',
                 },
                 {
                     date: '2016-05-03',
-                    nombre: 'Luis',
-                    apellido: 'Polonia',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                }                
+                    nombre: 'Educacion Fisica',
+                    seccion: '',
+                    nivel: 'Primaria',
+                    curso: '3 ero',
+                },
+                {
+                    date: '2016-05-03',
+                    nombre: 'Ciencias Naturales',
+                    seccion: 'C',
+                    nivel: 'Primaria',
+                    curso: '1 ero',
+                },
+                
             ]
         }
     },
 }
 </script>
-
-<style>
-    table.el-table__body {
-        overflow-x: scroll;
-    }
-</style>

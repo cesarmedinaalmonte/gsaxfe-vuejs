@@ -1,10 +1,122 @@
 <template>
-    <div>Curso Lista</div>
+    <el-row style="margin-top: 20px;">
+        <el-col :span="24">
+            <el-row>
+                <el-col :span="24" style="text-align: right;">
+                    <el-button type="primary">Crear Curso</el-button>
+                </el-col>
+            </el-row>
+            <el-row style="margin-top: 10px;">
+                <el-col :span="24">
+                    
+                    <el-table
+                        :data="tableData"
+                        style="width: 100%">
+
+                        <el-table-column
+                            label="Nombre"
+                            width="180">
+                            <template slot-scope="scope">
+                                <span style="margin-left: 10px">{{ scope.row.nombre }}</span>
+                            </template>
+                        </el-table-column>
+
+                        <el-table-column
+                            label="Seccion"
+                            width="180">
+                            <template slot-scope="scope">
+                                <span style="margin-left: 10px">{{ scope.row.seccion }}</span>
+                            </template>
+                        </el-table-column>
+
+                        <el-table-column
+                            label="Nivel"
+                            width="180">
+                            <template slot-scope="scope">
+                                <span style="margin-left: 10px">{{ scope.row.nivel }}</span>
+                            </template>
+                        </el-table-column>
+                        
+                        <el-table-column
+                            label="Creado En"
+                            width="180">
+                            <template slot-scope="scope">
+                                <i class="el-icon-time"></i>
+                                <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                            </template>
+                        </el-table-column>
+
+                        <el-table-column
+                            label="Operationes">
+                            <template slot-scope="scope">
+                                <el-button size="mini">Editar</el-button>
+                                <el-button size="mini" type="danger">Eliminar</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+
+                    <div style="text-align:right; margin-top:15px;">
+                        <el-pagination background
+                            :current-page.sync="pageNumber"
+                            :page-size="5"
+                            layout="total, prev, pager, next"
+                            :total="40">
+                        </el-pagination>
+                    </div>
+
+                </el-col>
+            </el-row>
+        </el-col>
+    </el-row>
 </template>
 
 
 <script>
 export default {
-    name: 'CursoLista'
+    name: 'CursoLista',
+    data() {
+        return {
+            pageNumber: 5,
+            tableData: [
+                {
+                    date: '2016-05-03',
+                    nombre: '1 ero',
+                    seccion: 'A',
+                    nivel: 'Primaria'
+                }, 
+                {
+                    date: '2016-05-03',
+                    nombre: '2 do',
+                    seccion: 'A',
+                    nivel: 'Primaria'
+                },
+                {
+                    date: '2016-05-03',
+                    nombre: '1 ero',
+                    seccion: 'B',
+                    nivel: 'Primaria'
+                },
+                {
+                    date: '2016-05-03',
+                    nombre: '3 ro',
+                    seccion: 'A',
+                    nivel: 'Inicial'
+                },
+                {
+                    date: '2016-05-03',
+                    nombre: '4 to',
+                    seccion: 'A',
+                    nivel: 'Primaria'
+                },
+                {
+                    date: '2016-05-03',
+                    nombre: '1 ero',
+                    seccion: 'C',
+                    nivel: 'Primaria'
+                },
+                
+            ]
+        }
+    },
 }
 </script>

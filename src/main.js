@@ -5,7 +5,7 @@ import store from './store'
 // plugins
 import '@/plugins/element'
 // app css
-import 'font-awesome/css/font-awesome.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import '@/assets/css/app.scss'
 
 Vue.config.productionTip = false

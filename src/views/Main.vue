@@ -5,6 +5,7 @@
         </el-aside>
 
         <el-main>
+            <PageHeader/>
             <router-view/>
         </el-main>
     </el-container>
@@ -12,11 +13,13 @@
 
 <script>
 import Sidebar from '@/components/Layout/Sidebar'
+import PageHeader from '@/components/Layout/PageHeader'
 
 export default {
     name: 'home',
     components: {
-        Sidebar
+        Sidebar,
+        PageHeader
     }
 }
 </script>

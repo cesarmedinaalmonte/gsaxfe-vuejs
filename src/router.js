@@ -7,8 +7,11 @@ import Main from './views/Main.vue'
 // modulos
 import CursoLista from '@/components/Cursos/CursoLista'
 import CursoFormulario from '@/components/Cursos/CursoFormulario'
+
 import ProfesorLista from '@/components/Profesores/ProfesorLista'
 import ProfesorFormulario from '@/components/Profesores/ProfesorFormulario'
+
+import MateriaLista from '@/components/Materias/MateriaLista'
 
 Vue.use(Router)
 
@@ -54,6 +57,21 @@ export default new Router({
             {
                 path: '/profesores/:profesor_id',
                 name: 'edita_profesor',
+                component: ProfesorFormulario
+            },
+            {
+                path: '/materias',
+                name: 'materias',
+                component: MateriaLista
+            },
+            {
+                path: '/materias/crear',
+                name: 'crear_materia',
+                component: ProfesorFormulario
+            },
+            {
+                path: '/materias/:materia_id',
+                name: 'edita_materia',
                 component: ProfesorFormulario
             }
         ]

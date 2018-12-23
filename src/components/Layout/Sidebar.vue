@@ -22,12 +22,15 @@
             </el-menu-item-group>
         </el-submenu> -->
         <el-menu-item index="2" :route="{ name: 'cursos'}">
-            <i class="el-icon-menu"></i>
+            <i class="fas fa-chalkboard"></i>
             <span>Cursos</span>
         </el-menu-item>
-        <el-menu-item index="3"  :route="{ name: 'profesores'}">
-            <!-- <i class="el-icon-menu"></i> -->
-            <i class="fa fa-user"></i> 
+        <el-menu-item index="3" :route="{ name: 'materias'}">
+            <i class="fas fa-book "></i> 
+            <span>Materias</span>
+        </el-menu-item>
+        <el-menu-item index="4"  :route="{ name: 'profesores'}">
+            <i class="fas fa-chalkboard-teacher"></i> 
             <span> Profesores</span>
         </el-menu-item>
         </el-menu>
