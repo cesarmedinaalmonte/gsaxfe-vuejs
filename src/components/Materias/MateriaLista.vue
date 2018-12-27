@@ -3,7 +3,9 @@
         <el-col :span="24">
             <el-row>
                 <el-col :span="24" style="text-align: right;">
-                    <el-button type="primary">Crear Materia</el-button>
+                    <router-link :to="{name: 'crear_materia'}">
+                        <el-button type="primary">Crear Materia</el-button>
+                    </router-link>
                 </el-col>
             </el-row>
             <el-row style="margin-top: 10px;">
@@ -53,7 +55,6 @@
                             label="Operationes">
                             <template slot-scope="scope">
                                 <el-button size="mini">Editar</el-button>
-                                <el-button size="mini" type="danger">Eliminar</el-button>
                             </template>
                         </el-table-column>
                     </el-table>

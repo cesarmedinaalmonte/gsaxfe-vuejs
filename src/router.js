@@ -12,6 +12,7 @@ import ProfesorLista from '@/components/Profesores/ProfesorLista'
 import ProfesorFormulario from '@/components/Profesores/ProfesorFormulario'
 
 import MateriaLista from '@/components/Materias/MateriaLista'
+import MateriaFormulario from '@/components/Materias/MateriaFormulario'
 
 Vue.use(Router)
 
@@ -41,7 +42,7 @@ export default new Router({
             },
             {
                 path: '/cursos/:curso_id',
-                name: 'edita_curso',
+                name: 'editar_curso',
                 component: CursoFormulario
             },
             {
@@ -56,7 +57,7 @@ export default new Router({
             },
             {
                 path: '/profesores/:profesor_id',
-                name: 'edita_profesor',
+                name: 'editar_profesor',
                 component: ProfesorFormulario
             },
             {
@@ -67,12 +68,12 @@ export default new Router({
             {
                 path: '/materias/crear',
                 name: 'crear_materia',
-                component: ProfesorFormulario
+                component: MateriaFormulario
             },
             {
                 path: '/materias/:materia_id',
-                name: 'edita_materia',
-                component: ProfesorFormulario
+                name: 'editar_materia',
+                component: MateriaFormulario
             }
         ]
     },

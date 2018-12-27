@@ -1,38 +1,50 @@
 <template>
     <el-row class="tac" style="height: 100%;">
         <el-menu :router="true"
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b">
-        <!-- <el-submenu index="1">
-            <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>Navigator One</span>
-            </template>
-            <el-menu-item-group title="Group One">
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item one</el-menu-item>
+            default-active="6"
+            class="el-menu-vertical-demo"
+            @open="handleOpen"
+            @close="handleClose"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+
+            <el-menu-item-group title="Administracion">
+                <el-menu-item index="6">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </el-menu-item>
+
+                <el-menu-item index="1" :route="{ name: 'cursos'}">
+                    <i class="fas fa-chalkboard"></i>
+                    <span>Cursos</span>
+                </el-menu-item>
+                <el-menu-item index="2"  :route="{ name: 'profesores'}">
+                    <i class="fas fa-chalkboard-teacher"></i> 
+                    <span> Profesores</span>
+                </el-menu-item>
+                <el-menu-item index="3" :route="{ name: 'materias'}">
+                    <i class="fas fa-book "></i> 
+                    <span>Materias</span>
+                </el-menu-item>
+
+                <el-menu-item index="7" >
+                    <i class="fas fa-file-pdf"></i> 
+                    <span> Reportes</span>
+                </el-menu-item>
+                
             </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
+
+            <el-menu-item-group title="Profesores">
+                <el-menu-item index="4">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </el-menu-item>
+                <el-menu-item index="5" >
+                    <i class="fas fa-file-pdf"></i> 
+                    <span> Reportes</span>
+                </el-menu-item>
             </el-menu-item-group>
-        </el-submenu> -->
-        <el-menu-item index="2" :route="{ name: 'cursos'}">
-            <i class="fas fa-chalkboard"></i>
-            <span>Cursos</span>
-        </el-menu-item>
-        <el-menu-item index="3" :route="{ name: 'materias'}">
-            <i class="fas fa-book "></i> 
-            <span>Materias</span>
-        </el-menu-item>
-        <el-menu-item index="4"  :route="{ name: 'profesores'}">
-            <i class="fas fa-chalkboard-teacher"></i> 
-            <span> Profesores</span>
-        </el-menu-item>
         </el-menu>
     </el-row>
 </template>

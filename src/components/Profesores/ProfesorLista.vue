@@ -3,7 +3,9 @@
         <el-col :span="24">
             <el-row>
                 <el-col :span="24" style="text-align: right;">
-                    <el-button type="primary">Crear Profesor</el-button>
+                    <router-link :to="{name: 'crear_profesor'}">
+                        <el-button type="primary">Crear Profesor</el-button>
+                    </router-link>
                 </el-col>
             </el-row>
             <el-row style="margin-top: 10px;">

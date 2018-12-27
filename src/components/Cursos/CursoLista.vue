@@ -3,7 +3,9 @@
         <el-col :span="24">
             <el-row>
                 <el-col :span="24" style="text-align: right;">
-                    <el-button type="primary">Crear Curso</el-button>
+                    <router-link :to="{name: 'crear_curso'}">
+                        <el-button type="primary">Crear Curso</el-button>
+                    </router-link>
                 </el-col>
             </el-row>
             <el-row style="margin-top: 10px;">
@@ -49,8 +51,9 @@
                         <el-table-column
                             label="Operationes">
                             <template slot-scope="scope">
-                                <el-button size="mini">Editar</el-button>
-                                <el-button size="mini" type="danger">Eliminar</el-button>
+                                <router-link :to="{name: 'editar_curso', params: {curso_id: scope.row.id }}"> 
+                                    <el-button size="mini">Editar</el-button> 
+                                </router-link>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -79,36 +82,42 @@ export default {
             pageNumber: 5,
             tableData: [
                 {
+                    id: 1,
                     date: '2016-05-03',
                     nombre: '1 ero',
                     seccion: 'A',
                     nivel: 'Primaria'
                 }, 
                 {
+                    id: 2,
                     date: '2016-05-03',
                     nombre: '2 do',
                     seccion: 'A',
                     nivel: 'Primaria'
                 },
                 {
+                    id: 3,
                     date: '2016-05-03',
                     nombre: '1 ero',
                     seccion: 'B',
                     nivel: 'Primaria'
                 },
                 {
+                    id: 4,
                     date: '2016-05-03',
                     nombre: '3 ro',
                     seccion: 'A',
                     nivel: 'Inicial'
                 },
                 {
+                    id: 5,
                     date: '2016-05-03',
                     nombre: '4 to',
                     seccion: 'A',
                     nivel: 'Primaria'
                 },
                 {
+                    id: 6,
                     date: '2016-05-03',
                     nombre: '1 ero',
                     seccion: 'C',
