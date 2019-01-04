@@ -4,7 +4,7 @@
             <el-row>
                 <el-col :span="24" style="text-align: right;">
                     <router-link :to="{name: 'crear_profesor'}">
-                        <el-button type="primary">Crear Profesor</el-button>
+                        <el-button type="primary" size="small">Crear Profesor</el-button>
                     </router-link>
                 </el-col>
             </el-row>
@@ -53,8 +53,9 @@
                         <el-table-column
                             label="Operationes">
                             <template slot-scope="scope">
-                                <el-button size="mini">Editar</el-button>
-                                <el-button size="mini" type="danger">Eliminar</el-button>
+                                <router-link :to="{name: 'editar_profesor', params: {profesor_id: scope.row.id }}">
+                                    <el-button size="mini" type="primary">Editar</el-button>
+                                </router-link>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -62,9 +63,10 @@
                     <div style="text-align:right; margin-top:15px;">
                         <el-pagination background
                             :current-page.sync="pageNumber"
-                            :page-size="5"
+                            :page-size="10"
                             layout="total, prev, pager, next"
-                            :total="40">
+                            :total="totalRecords"
+                            @current-change="listaProfesores()">
                         </el-pagination>
                     </div>
 
@@ -76,55 +78,38 @@
 
 
 <script>
+import axios from '@/plugins/axios'
+
 export default {
     name: 'ProfesorLista',
     data() {
         return {
-            pageNumber: 5,
-            tableData: [
-                {
-                    date: '2016-05-03',
-                    nombre: 'Pedro',
-                    apellido: 'Hernandez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                }, 
-                {
-                    date: '2016-05-03',
-                    nombre: 'Diogenes',
-                    apellido: 'Martinez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Gloria',
-                    apellido: 'Estefan',
-                    sexo: 'Femenino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Hector',
-                    apellido: 'Fernandez',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Luis',
-                    apellido: 'Polonia',
-                    sexo: 'Masculino',
-                    direccion: 'C/ XX #5, Santiago, RD.',
-                    telefono: '(809) 555 3333',
-                }                
-            ]
+            pageNumber: 1,
+            totalRecords: 0,
+            tableData: []
         }
     },
+    methods:{
+        listaProfesores: function(){
+            let _this = this;
+            axios.get(`/docente/?page=${_this.pageNumber}`)
+            .then((response) => {
+                
+                _this.tableData = response.data.results;
+                _this.totalRecords = response.data.count;
+
+            }).catch((error)=> {
+                console.log(error);
+            });
+        }
+    },
+    beforeMount: function(){
+        this.$store.dispatch('updateHeader', {
+                title: 'Lista de Profesores',
+                breadcrumb: ['Profesores']
+            })
+        this.listaProfesores();
+    }
 }
 </script>
 

@@ -6,7 +6,7 @@
 
         <el-main>
             <PageHeader/>
-            <router-view/>
+            <router-view :key="$route.path"/>
         </el-main>
     </el-container>
 </template>

@@ -14,6 +14,8 @@ import ProfesorFormulario from '@/components/Profesores/ProfesorFormulario'
 import MateriaLista from '@/components/Materias/MateriaLista'
 import MateriaFormulario from '@/components/Materias/MateriaFormulario'
 
+import Error404 from '@/components/Errores/404'
+
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +27,11 @@ export default new Router({
       name: 'login',
       component: Login
     },
+    {
+        path: '*',
+        name: 'not_found',
+        component: Error404
+      },
     {
         path: '/',
         name: 'inicio',
