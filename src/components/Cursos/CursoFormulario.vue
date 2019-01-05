@@ -3,7 +3,7 @@
         <el-col :span="24">
             <el-row>
                 <el-col :span="24" style="text-align: right;">
-                    <el-button type="primary" size="small" style="margin-right: 5px;" @click="guardar()">Guardar</el-button> 
+                    <el-button type="primary" size="small" style="margin-right: 5px;" @click="guardar()">Guardar</el-button>
                     <router-link :to="{name: 'cursos'}">
                         <el-button type="danger"  size="small">Cancelar</el-button>
                     </router-link>
@@ -15,24 +15,22 @@
                     <el-form label-width="120px" :model="curso" :rules="rules" ref="formulario_curso">
 
                         <el-form-item label="Nombre" prop="grado">
-                            <el-input placeholder="Nombre del curso" v-model="curso.grado"></el-input>
+                            <el-input placeholder="Nombre del curso" v-model="curso.nombre"></el-input>
                         </el-form-item>
 
                         <el-form-item label="Seccion" prop="seccion">
-                            <el-select placeholder="Seccion" style="width:100%;" v-model="curso.seccion.id">
-                            <el-option v-for="item in secciones"
-                                        :key="item.id"
-                                        :label="item.nombre"
-                                        :value="item.id"></el-option>
+                            <el-select placeholder="Seccion" style="width:100%;" v-model="curso.seccion">
+                                <el-option label="A" value="A" ></el-option>
+                                <el-option label="B" value="B"></el-option>
+                                <el-option label="C" value="C"></el-option>
                             </el-select>
                         </el-form-item>
 
                         <el-form-item label="Nivel" prop="nivel">
-                            <el-select placeholder="Nivel" style="width:100%;" v-model="curso.nivel.id">
-                            <el-option v-for="item in niveles"
-                                        :key="item.id"
-                                        :label="item.nombre"
-                                        :value="item.id"></el-option>
+                            <el-select placeholder="Nivel" style="width:100%;"  v-model="curso.nivel">
+                                <el-option label="Inicial" value="Inicial" ></el-option>
+                                <el-option label="Primaria" value="Primaria"></el-option>
+                                <el-option label="Secundaria" value="Secundaria"></el-option>
                             </el-select>
                         </el-form-item>
 
@@ -48,47 +46,23 @@
 <script>
 import axios from '@/plugins/axios'
 
-const NivelModel = function(data = {}){
-    return {
-        id: data.id ? data.id : "",
-        nombre:  data.nombre ? data.nombre : ""
-    };
-}
-
-const SeccionModel = function(data = {}){
-    return {
-        id: data.id ? data.id : "",
-        nombre:  data.nombre ? data.nombre : ""
-    };
-}
 
 const CursoModel = function(data = {}){
     return {
         id: data.id ? data.id : "",
-        grado:  data.grado ? data.grado : "",
-        seccion:  data.seccion ? data.seccion : SeccionModel(),
-        nivel:  data.nivel ? data.nivel : NivelModel()
+        nombre:  data.nombre ? data.nombre : "",
+        seccion:  data.seccion ? data.seccion :"",
+        nivel:  data.nivel ? data.nivel: ""
     };
 }
 
-const CursoFormRules = function(){
+const CursoFormRules = function() {
     return {
-        grado: [{ required: true, message: 'El nombre es requerido', trigger: 'change' }],
-        seccion: {
-            type: "object", required: true,
-            fields: {
-                id: {type: "number", required: true, message: 'La seccion es requerida', trigger: 'change'}
-            }
-        },
-        nivel: {
-            type: "object", required: true,
-            fields: {
-                id: {type: "number", required: true, message: 'El nivel es requerido', trigger: 'change'}
-            }
+        nombre: [{required: true, message: 'El nombre es requerido', trigger: 'change'}],
+        seccion: [{required: true, message: 'La seccion es requerida', trigger: 'change'}],
+        nivel: [{required: true, message: 'El nivel es requerido', trigger: 'change'}]
         }
-        
-    }
-}
+    };
 
 export default {
     name: 'CursoFormulario',
@@ -107,18 +81,18 @@ export default {
             _this.cargarNiveles();
             _this.cargarSecciones();
             if (typeof this.$route.params.curso_id !== 'undefined'){
-                
+
                 axios.get(`/curso/${this.$route.params.curso_id}/`)
                 .then((response) => {
                     _this.curso = response.data;
                     // actualiza el header
                     this.$store.dispatch('updateHeader', {
-                        title:  _this.curso.grado,
-                        breadcrumb: ['Cursos', _this.curso.grado]
+                        title:  _this.curso.nombre,
+                        breadcrumb: ['Cursos', _this.curso.nombre]
                     })
                 }).catch((error)=> {
                    if (error.response.status === 404){ // not found
-                       _this.$router.push({name: 'not_found'});  
+                       _this.$router.push({name: 'not_found'});
                    }
                 });
 
@@ -182,7 +156,7 @@ export default {
                                 type: 'success'
                             });
                             // redireccionar a la ruta de editar
-                            _this.$router.push({name: 'editar_curso', params: {curso_id: data.id }});  
+                            _this.$router.push({name: 'editar_curso', params: {curso_id: data.id }});
                         }).catch((error)=> {
                             this.$notify.error({
                                 title: 'Error',
@@ -197,7 +171,7 @@ export default {
                         type: 'warning'
                     });
                 }
-                    
+
             });
         }
     },

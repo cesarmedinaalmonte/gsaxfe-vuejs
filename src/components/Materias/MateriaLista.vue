@@ -10,7 +10,7 @@
             </el-row>
             <el-row style="margin-top: 10px;">
                 <el-col :span="24">
-                    
+
                     <el-table
                         :data="tableData"
                         style="width: 100%">
@@ -42,7 +42,7 @@
                                 <span style="margin-left: 10px">{{ scope.row.nivel }}</span>
                             </template>
                         </el-table-column>
-                        
+
                         <el-table-column
                             label="Creado En">
                             <template slot-scope="scope">
@@ -76,7 +76,27 @@
 
 
 <script>
-export default {
+    import axios from '@/plugins/axios'
+
+    const MateriaModel = function(data = {}){
+        return {
+            id: data.id ? data.id : "",
+            nombre:  data.nombre ? data.nombre : "",
+            apellido:  data.apellido ? data.apellido : "",
+
+        };
+    }
+
+    const ProfesorFormRules = function(){
+        return {
+            nombre: [{ required: true, message: 'El nombre es requerido', trigger: 'change' },],
+            apellido: [{ required: true, message: 'El apellido es requerido', trigger: 'change' },],
+            direccion: [{ required: true, message: 'El direccion es requerido', trigger: 'change' },],
+            telefono: [{ min: 10, max: 10, message: 'El telefono debe tener 10 numeros', trigger: 'change' }]
+        }
+    }
+
+    export default {
     name: 'CursoLista',
     data() {
         return {
@@ -88,7 +108,7 @@ export default {
                     seccion: 'A',
                     nivel: 'Primaria',
                     curso: '1 ero',
-                }, 
+                },
                 {
                     date: '2016-05-03',
                     nombre: 'Ciencias Sociales',
@@ -124,7 +144,7 @@ export default {
                     nivel: 'Primaria',
                     curso: '1 ero',
                 },
-                
+
             ]
         }
     },
