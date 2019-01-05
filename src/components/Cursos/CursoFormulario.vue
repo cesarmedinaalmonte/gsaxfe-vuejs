@@ -128,8 +128,8 @@ export default {
             // validacion de formulario
             this.$refs.formulario_curso.validate((valid) => {
                 if (valid) {
-                    delete _this.curso.nivel.nombre;
-                    delete _this.curso.seccion.nombre;
+                    delete _this.curso.nivel;
+                    delete _this.curso.seccion;
 
                     if (_this.curso.id){ // editar profesor
                         axios.put(`/curso/${this.$route.params.curso_id}/`, _this.curso)

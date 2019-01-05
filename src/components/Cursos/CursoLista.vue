@@ -10,7 +10,7 @@
             </el-row>
             <el-row style="margin-top: 10px;">
                 <el-col :span="24">
-                    
+
                     <el-table
                         :data="tableData"
                         style="width: 100%">
@@ -38,7 +38,7 @@
                                 <span style="margin-left: 10px">{{ scope.row.nivel }}</span>
                             </template>
                         </el-table-column>
-                        
+
                         <el-table-column
                             label="Creado En"
                             width="180">
@@ -51,8 +51,8 @@
                         <el-table-column
                             label="Operationes">
                             <template slot-scope="scope">
-                                <router-link :to="{name: 'editar_curso', params: {curso_id: scope.row.id }}"> 
-                                    <el-button size="mini">Editar</el-button> 
+                                <router-link :to="{name: 'editar_curso', params: {curso_id: scope.row.id }}">
+                                    <el-button size="mini">Editar</el-button>
                                 </router-link>
                             </template>
                         </el-table-column>
@@ -79,52 +79,8 @@ export default {
     name: 'CursoLista',
     data() {
         return {
-            pageNumber: 5,
-            tableData: [
-                {
-                    id: 1,
-                    date: '2016-05-03',
-                    nombre: '1 ero',
-                    seccion: 'A',
-                    nivel: 'Primaria'
-                }, 
-                {
-                    id: 2,
-                    date: '2016-05-03',
-                    nombre: '2 do',
-                    seccion: 'A',
-                    nivel: 'Primaria'
-                },
-                {
-                    id: 3,
-                    date: '2016-05-03',
-                    nombre: '1 ero',
-                    seccion: 'B',
-                    nivel: 'Primaria'
-                },
-                {
-                    id: 4,
-                    date: '2016-05-03',
-                    nombre: '3 ro',
-                    seccion: 'A',
-                    nivel: 'Inicial'
-                },
-                {
-                    id: 5,
-                    date: '2016-05-03',
-                    nombre: '4 to',
-                    seccion: 'A',
-                    nivel: 'Primaria'
-                },
-                {
-                    id: 6,
-                    date: '2016-05-03',
-                    nombre: '1 ero',
-                    seccion: 'C',
-                    nivel: 'Primaria'
-                },
-                
-            ]
+            pageNumber: 1,
+            tableData: []
         }
     },
 }
