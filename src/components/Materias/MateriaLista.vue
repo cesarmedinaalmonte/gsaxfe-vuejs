@@ -23,23 +23,9 @@
                         </el-table-column>
 
                         <el-table-column
-                            label="Curos">
+                            label="Codigo">
                             <template slot-scope="scope">
-                                <span style="margin-left: 10px">{{ scope.row.curso }}</span>
-                            </template>
-                        </el-table-column>
-
-                        <el-table-column
-                            label="Seccion">
-                            <template slot-scope="scope">
-                                <span style="margin-left: 10px">{{ scope.row.seccion }}</span>
-                            </template>
-                        </el-table-column>
-
-                        <el-table-column
-                            label="Nivel">
-                            <template slot-scope="scope">
-                                <span style="margin-left: 10px">{{ scope.row.nivel }}</span>
+                                <span style="margin-left: 10px">{{ scope.row.codigo }}</span>
                             </template>
                         </el-table-column>
 
@@ -52,7 +38,7 @@
                         </el-table-column>
 
                         <el-table-column
-                            label="Operationes">
+                            label="Operationes">KK
                             <template slot-scope="scope">
                                 <el-button size="mini">Editar</el-button>
                             </template>
@@ -77,76 +63,41 @@
 
 <script>
     import axios from '@/plugins/axios'
-
-    const MateriaModel = function(data = {}){
+export default {
+    name: 'MateriaLista',
+        data() {
         return {
-            id: data.id ? data.id : "",
-            nombre:  data.nombre ? data.nombre : "",
-            apellido:  data.apellido ? data.apellido : "",
-
-        };
-    }
-
-    const ProfesorFormRules = function(){
-        return {
-            nombre: [{ required: true, message: 'El nombre es requerido', trigger: 'change' },],
-            apellido: [{ required: true, message: 'El apellido es requerido', trigger: 'change' },],
-            direccion: [{ required: true, message: 'El direccion es requerido', trigger: 'change' },],
-            telefono: [{ min: 10, max: 10, message: 'El telefono debe tener 10 numeros', trigger: 'change' }]
-        }
-    }
-
-    export default {
-    name: 'CursoLista',
-    data() {
-        return {
-            pageNumber: 5,
-            tableData: [
-                {
-                    date: '2016-05-03',
-                    nombre: 'Matematicas',
-                    seccion: 'A',
-                    nivel: 'Primaria',
-                    curso: '1 ero',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Ciencias Sociales',
-                    seccion: 'A',
-                    nivel: 'Primaria',
-                    curso: '1 ero',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Matematicas',
-                    seccion: 'B',
-                    nivel: 'Primaria',
-                    curso: '2 do',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Dibujo',
-                    seccion: 'A',
-                    nivel: 'Inicial',
-                    curso: '1 ero',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Educacion Fisica',
-                    seccion: '',
-                    nivel: 'Primaria',
-                    curso: '3 ero',
-                },
-                {
-                    date: '2016-05-03',
-                    nombre: 'Ciencias Naturales',
-                    seccion: 'C',
-                    nivel: 'Primaria',
-                    curso: '1 ero',
-                },
-
-            ]
+            pageNumber: 1,
+            totalRecords: 0,
+            tableData: []
         }
     },
-}
+    methods:{
+        listaMateria: function(){
+            let _this = this;
+            axios.get(`/materia/?page=${_this.pageNumber}`)
+                .then((response) => {
+
+                    _this.tableData = response.data.results;
+                    _this.totalRecords = response.data.count;
+
+                }).catch((error)=> {
+                console.log(error);
+            });
+        }
+    },
+    beforeMount: function(){
+        this.$store.dispatch('updateHeader', {
+            title: 'Lista de Materias',
+            breadcrumb: ['Materias']
+        })
+        this.listaMateria();
+    }
+    }
 </script>
+
+<style>
+    table.el-table__body {
+        overflow-x: scroll;
+    }
+</style>
