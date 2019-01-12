@@ -20,8 +20,12 @@
                             <el-input placeholder="Nombre" v-model="estudiante.nombre"></el-input>
                         </el-form-item>
 
-                        <el-form-item label="Apellido" prop="apellido">
-                            <el-input placeholder="Apellido" v-model="estudiante.apellidoPaterno"></el-input>
+                        <el-form-item label="Apellido Paterno" prop="apellidoP">
+                            <el-input placeholder="Apellido Paterno" v-model="estudiante.apellidoPaterno"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="Apellido Materno" prop="apellidoM">
+                            <el-input placeholder="Apellido Materno" v-model="estudiante.apellidoMaterno"></el-input>
                         </el-form-item>
 
                         <el-form-item label="Sexo" prop="sexo">
@@ -29,6 +33,10 @@
                             <el-option label="Masculino" value="M"></el-option>
                             <el-option label="Femenino" value="F"></el-option>
                             </el-select>
+                        </el-form-item>
+
+                        <el-form-item label="Fecha Nacimiento" prop="fechanacimiento">
+                            <el-date-picker type="date"  placeholder="Fecha" suffix-icon="el-icon-date" v-model="estudiante.fechanacimiento"></el-date-picker>
                         </el-form-item>
 
                         <el-form-item label="Direccion" prop="direccion">
