@@ -20,19 +20,23 @@
                     <span>Cursos</span>
                 </el-menu-item>
                 <el-menu-item index="2"  :route="{ name: 'profesores'}">
-                    <i class="fas fa-chalkboard-teacher"></i> 
+                    <i class="fas fa-chalkboard-teacher"></i>
                     <span> Profesores</span>
                 </el-menu-item>
                 <el-menu-item index="3" :route="{ name: 'materias'}">
-                    <i class="fas fa-book "></i> 
+                    <i class="fas fa-book "></i>
                     <span>Materias</span>
+                </el-menu-item>
+                <el-menu-item index="8"  :route="{ name: 'estudiantes'}">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span> Estudiantes</span>
                 </el-menu-item>
 
                 <el-menu-item index="7" >
-                    <i class="fas fa-file-pdf"></i> 
+                    <i class="fas fa-file-pdf"></i>
                     <span> Reportes</span>
                 </el-menu-item>
-                
+
             </el-menu-item-group>
 
             <el-menu-item-group title="Profesores">
@@ -41,7 +45,7 @@
                     <span>Dashboard</span>
                 </el-menu-item>
                 <el-menu-item index="5" >
-                    <i class="fas fa-file-pdf"></i> 
+                    <i class="fas fa-file-pdf"></i>
                     <span> Reportes</span>
                 </el-menu-item>
             </el-menu-item-group>

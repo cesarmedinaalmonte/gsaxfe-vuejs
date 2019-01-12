@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 
+//
 import Login from './views/Login.vue'
 import Main from './views/Main.vue'
 
@@ -13,6 +13,9 @@ import ProfesorFormulario from '@/components/Profesores/ProfesorFormulario'
 
 import MateriaLista from '@/components/Materias/MateriaLista'
 import MateriaFormulario from '@/components/Materias/MateriaFormulario'
+
+import EstudianteLista from '@/components/Estudiantes/EstudianteLista'
+import EstudianteFormulario from '@/components/Estudiantes/EstudianteFormulario'
 
 import Error404 from '@/components/Errores/404'
 
@@ -81,9 +84,25 @@ export default new Router({
                 path: '/materias/:materia_id',
                 name: 'editar_materia',
                 component: MateriaFormulario
+            },
+            {
+                path: '/estudiantes',
+                name: 'estudiantes',
+                component: EstudianteLista
+            },
+            {
+                path: '/profesores/crear',
+                name: 'crear_estudiante',
+                component: EstudianteFormulario
+            },
+            {
+                path: '/estudiantes/:estudiante_id',
+                name: 'editar_estudiante',
+                component: EstudianteFormulario
             }
-        ]
+
+            ]
     },
-    
+
   ]
 })

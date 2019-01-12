@@ -81,6 +81,7 @@
 <script>
 import axios from '@/plugins/axios'
 
+
 export default {
     name: 'ProfesorLista',
     data() {
@@ -88,6 +89,8 @@ export default {
             pageNumber: 1,
             totalRecords: 0,
             tableData: []
+
+
         }
     },
     methods:{
@@ -109,7 +112,9 @@ export default {
                 title: 'Lista de Profesores',
                 breadcrumb: ['Profesores']
             })
-        this.listaProfesores();
+
+        this.listaProfesores()
+
     }
 }
 </script>
