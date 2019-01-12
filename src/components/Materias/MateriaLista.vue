@@ -12,6 +12,7 @@
                 <el-col :span="24">
 
                     <el-table
+                        v-loading="loading"
                         :data="tableData"
                         style="width: 100%">
 
@@ -38,9 +39,11 @@
                         </el-table-column>
 
                         <el-table-column
-                            label="Operationes">KK
+                            label="Operationes">
                             <template slot-scope="scope">
-                                <el-button size="mini">Editar</el-button>
+                                <router-link :to="{name: 'editar_materia', params: {materia_id: scope.row.id }}">
+                                    <el-button size="mini" type="primary">Editar</el-button>
+                                </router-link>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -48,9 +51,10 @@
                     <div style="text-align:right; margin-top:15px;">
                         <el-pagination background
                             :current-page.sync="pageNumber"
-                            :page-size="5"
+                            :page-size="10"
                             layout="total, prev, pager, next"
-                            :total="40">
+                            :total="totalRecords"
+                            @current-change="listaProfesores()">
                         </el-pagination>
                     </div>
 

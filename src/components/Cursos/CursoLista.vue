@@ -61,9 +61,10 @@
                     <div style="text-align:right; margin-top:15px;">
                         <el-pagination background
                             :current-page.sync="pageNumber"
-                            :page-size="5"
+                            :page-size="10"
                             layout="total, prev, pager, next"
-                            :total="40">
+                            :total="totalRecords"
+                            @current-change="listaCurso()">
                         </el-pagination>
                     </div>
 
@@ -74,14 +75,44 @@
 </template>
 
 
+
 <script>
-export default {
-    name: 'CursoLista',
-    data() {
-        return {
-            pageNumber: 1,
-            tableData: []
+    import axios from '@/plugins/axios'
+    export default {
+        name: 'CursoLista',
+        data() {
+            return {
+                pageNumber: 1,
+                totalRecords: 0,
+                tableData: []
+            }
+        },
+        methods:{
+            listaCurso: function(){
+                let _this = this;
+                axios.get(`/curso/?page=${_this.pageNumber}`)
+                    .then((response) => {
+
+                        _this.tableData = response.data.results;
+                        _this.totalRecords = response.data.count;
+
+                    }).catch((error)=> {
+                    console.log(error);
+                });
+            }
+        },
+        beforeMount: function(){
+            this.$store.dispatch('updateHeader', {
+                title: 'Lista de Curso',
+                breadcrumb: ['Cursos']
+            })
+            this.listaCurso();
         }
-    },
-}
+    }
 </script>
+
+<style>
+    table.el-table__body {
+        overflow-x: scroll;
+    }
+</style>

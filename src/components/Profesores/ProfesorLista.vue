@@ -12,6 +12,7 @@
                 <el-col :span="24">
 
                     <el-table
+                        v-loading="loading"
                         :data="tableData"
                         style="width: 100%!important;">
 
@@ -94,7 +95,7 @@ export default {
             let _this = this;
             axios.get(`/docente/?page=${_this.pageNumber}`)
             .then((response) => {
-                
+
                 _this.tableData = response.data.results;
                 _this.totalRecords = response.data.count;
 
