@@ -12,7 +12,7 @@
                 <el-col :span="24">
 
                     <el-table
-                        v-loading="loading"
+                        v-loading="table_loading"
                         :data="tableData"
                         style="width: 100%">
 
@@ -30,13 +30,13 @@
                             </template>
                         </el-table-column>
 
-                        <el-table-column
+                        <!-- <el-table-column
                             label="Creado En">
                             <template slot-scope="scope">
                                 <i class="el-icon-time"></i>
                                 <span style="margin-left: 10px">{{ scope.row.date }}</span>
                             </template>
-                        </el-table-column>
+                        </el-table-column> -->
 
                         <el-table-column
                             label="Operationes">
@@ -66,11 +66,12 @@
 
 
 <script>
-    import axios from '@/plugins/axios'
+import axios from '@/plugins/axios'
 export default {
     name: 'MateriaLista',
         data() {
         return {
+            table_loading: false,
             pageNumber: 1,
             totalRecords: 0,
             tableData: []
@@ -79,15 +80,20 @@ export default {
     methods:{
         listaMateria: function(){
             let _this = this;
+            _this.table_loading = true;
             axios.get(`/materia/?page=${_this.pageNumber}`)
                 .then((response) => {
 
                     _this.tableData = response.data.results;
                     _this.totalRecords = response.data.count;
 
+                    _this.table_loading = false;
+
                 }).catch((error)=> {
                 console.log(error);
+                _this.table_loading = false;
             });
+            
         }
     },
     beforeMount: function(){

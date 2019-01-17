@@ -5,6 +5,8 @@ import Login from './views/Login.vue'
 import Main from './views/Main.vue'
 
 // modulos
+import Dashboard from '@/components/Dashboard/Dashboard'
+
 import CursoLista from '@/components/Cursos/CursoLista'
 import CursoFormulario from '@/components/Cursos/CursoFormulario'
 
@@ -37,9 +39,13 @@ export default new Router({
       },
     {
         path: '/',
-        name: 'inicio',
         component: Main,
         children: [
+            {
+                path: '/',
+                name: 'dashboard',
+                component: Dashboard
+            },
             {
                 path: '/cursos',
                 name: 'cursos',
@@ -86,14 +92,14 @@ export default new Router({
                 component: MateriaFormulario
             },
             {
-                path: '/estudiantes',
-                name: 'estudiantes',
-                component: EstudianteLista
-            },
-            {
                 path: '/profesores/crear',
                 name: 'crear_estudiante',
                 component: EstudianteFormulario
+            },
+            {
+                path: '/estudiantes',
+                name: 'estudiantes',
+                component: EstudianteLista
             },
             {
                 path: '/estudiantes/:estudiante_id',

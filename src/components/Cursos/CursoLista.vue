@@ -40,15 +40,6 @@
                         </el-table-column>
 
                         <el-table-column
-                            label="Creado En"
-                            width="180">
-                            <template slot-scope="scope">
-                                <i class="el-icon-time"></i>
-                                <span style="margin-left: 10px">{{ scope.row.date }}</span>
-                            </template>
-                        </el-table-column>
-
-                        <el-table-column
                             label="Operationes">
                             <template slot-scope="scope">
                                 <router-link :to="{name: 'editar_curso', params: {curso_id: scope.row.id }}">

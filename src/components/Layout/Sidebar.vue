@@ -10,7 +10,7 @@
             active-text-color="#ffd04b">
 
             <el-menu-item-group title="Administracion">
-                <el-menu-item index="6">
+                <el-menu-item index="6" :route="{ name: 'dashboard'}">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </el-menu-item>
