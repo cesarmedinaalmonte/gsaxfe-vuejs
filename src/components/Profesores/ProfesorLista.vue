@@ -88,22 +88,26 @@ export default {
         return {
             pageNumber: 1,
             totalRecords: 0,
-            tableData: []
-
-
+            tableData: [],
+            loading: false
         }
     },
     methods:{
         listaProfesores: function(){
             let _this = this;
-            axios.get(`/docente/?page=${_this.pageNumber}`)
+            _this.loading = true;
+            axios.get(`/docentes/?page=${_this.pageNumber}`)
             .then((response) => {
 
-                _this.tableData = response.data.results;
-                _this.totalRecords = response.data.count;
+                _this.tableData = response.data.data;
+                _this.totalRecords = 12; //response.data.count;
+
+                _this.loading = false;
 
             }).catch((error)=> {
                 console.log(error);
+
+                _this.loading = fasle;
             });
         }
     },

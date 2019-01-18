@@ -81,11 +81,10 @@
         methods:{
             listaCurso: function(){
                 let _this = this;
-                axios.get(`/curso/?page=${_this.pageNumber}`)
+                axios.get(`/cursos/?page=${_this.pageNumber}`)
                     .then((response) => {
-
-                        _this.tableData = response.data.results;
-                        _this.totalRecords = response.data.count;
+                        _this.tableData = response.data;
+                        _this.totalRecords = 12; //response.data.count;
 
                     }).catch((error)=> {
                     console.log(error);

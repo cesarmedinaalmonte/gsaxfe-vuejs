@@ -32,22 +32,11 @@
                     <span> Estudiantes</span>
                 </el-menu-item>
 
-                <el-menu-item index="7" >
-                    <i class="fas fa-file-pdf"></i>
-                    <span> Reportes</span>
+                <el-menu-item index="7" :route="{ name: 'inscripcion_formulario'}">
+                    <i class="fas fa-file-contract"></i>
+                    <span> Inscripciones</span>
                 </el-menu-item>
 
-            </el-menu-item-group>
-
-            <el-menu-item-group title="Profesores">
-                <el-menu-item index="4">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </el-menu-item>
-                <el-menu-item index="5" >
-                    <i class="fas fa-file-pdf"></i>
-                    <span> Reportes</span>
-                </el-menu-item>
             </el-menu-item-group>
         </el-menu>
     </el-row>

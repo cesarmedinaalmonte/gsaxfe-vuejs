@@ -81,11 +81,11 @@ export default {
         listaMateria: function(){
             let _this = this;
             _this.table_loading = true;
-            axios.get(`/materia/?page=${_this.pageNumber}`)
+            axios.get(`/materias/?page=${_this.pageNumber}`)
                 .then((response) => {
 
-                    _this.tableData = response.data.results;
-                    _this.totalRecords = response.data.count;
+                    _this.tableData = response.data.data;
+                    _this.totalRecords = 12; //response.data.count;
 
                     _this.table_loading = false;
 

@@ -19,6 +19,8 @@ import MateriaFormulario from '@/components/Materias/MateriaFormulario'
 import EstudianteLista from '@/components/Estudiantes/EstudianteLista'
 import EstudianteFormulario from '@/components/Estudiantes/EstudianteFormulario'
 
+import InscripcionFormulario from '@/components/Inscripcion/InscripcionFormulario'
+
 import Error404 from '@/components/Errores/404'
 
 Vue.use(Router)
@@ -105,9 +107,14 @@ export default new Router({
                 path: '/estudiantes/:estudiante_id',
                 name: 'editar_estudiante',
                 component: EstudianteFormulario
+            },
+            {
+                path: '/inscripciones/',
+                name: 'inscripcion_formulario',
+                component: InscripcionFormulario
             }
 
-            ]
+        ] 
     },
 
   ]

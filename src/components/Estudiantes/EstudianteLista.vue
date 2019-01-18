@@ -12,7 +12,6 @@
                 <el-col :span="24">
 
                     <el-table
-                        v-loading="loading"
                         :data="tableData"
                         style="width: 100%!important;">
 
@@ -97,18 +96,16 @@ export default {
             pageNumber: 1,
             totalRecords: 0,
             tableData: []
-
-
         }
     },
     methods:{
         listaEstudiantes: function(){
             let _this = this;
-            axios.get(`/estudiante/?page=${_this.pageNumber}`)
+            axios.get(`/estudiantes/?page=${_this.pageNumber}`)
             .then((response) => {
 
-                _this.tableData = response.data.results;
-                _this.totalRecords = response.data.count;
+                _this.tableData = response.data.data;
+                _this.totalRecords = 12; //response.data.count;
 
             }).catch((error)=> {
                 console.log(error);
