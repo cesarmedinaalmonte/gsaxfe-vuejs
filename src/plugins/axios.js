@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://35.236.244.72:8000/api';
+const baseURL = 'http://gsax-app.local/app_dev.php/';
 
 export default axios.create({
     baseURL: baseURL,

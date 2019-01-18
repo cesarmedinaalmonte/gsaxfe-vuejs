@@ -20,12 +20,8 @@
                             <el-input placeholder="Nombre" v-model="estudiante.nombre"></el-input>
                         </el-form-item>
 
-                        <el-form-item label="Apellido Paterno" prop="apellidoP">
-                            <el-input placeholder="Apellido Paterno" v-model="estudiante.apellidoPaterno"></el-input>
-                        </el-form-item>
-
-                        <el-form-item label="Apellido Materno" prop="apellidoM">
-                            <el-input placeholder="Apellido Materno" v-model="estudiante.apellidoMaterno"></el-input>
+                        <el-form-item label="Apellido" prop="apellido">
+                            <el-input placeholder="Nombre" v-model="estudiante.apellido"></el-input>
                         </el-form-item>
 
                         <el-form-item label="Sexo" prop="sexo">
@@ -35,12 +31,20 @@
                             </el-select>
                         </el-form-item>
 
-                        <el-form-item label="Fecha Nacimiento" prop="fechanacimiento">
-                            <el-date-picker type="date"  placeholder="Fecha" suffix-icon="el-icon-date" v-model="estudiante.fechanacimiento"></el-date-picker>
+                        <el-form-item label="Fecha Nac." prop="fechanacimiento">
+                            <el-date-picker type="date"  placeholder="Fecha" suffix-icon="el-icon-date" v-model="estudiante.fechaNacimiento"></el-date-picker>
                         </el-form-item>
 
                         <el-form-item label="Direccion" prop="direccion">
                             <el-input placeholder="Direccion" v-model="estudiante.direccion"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="Padre" prop="apellidoP">
+                            <el-input placeholder="Apellido Paterno" v-model="estudiante.padre"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="Madre" prop="apellidoM">
+                            <el-input placeholder="Apellido Materno" v-model="estudiante.madre"></el-input>
                         </el-form-item>
 
                         <el-form-item label="Telefono" prop="telefono" >
@@ -65,9 +69,14 @@ const EstudianteModel = function(data = {}){
         nombre:  data.nombre ? data.nombre : "",
         apellido:  data.apellido ? data.apellido : "",
         sexo:  data.sexo ? data.sexo : "M",
+        fechaNacimiento:  data.fechaNacimiento ? data.fechaNacimiento : "",
         direccion:  data.direccion ? data.direccion : "",
         telefono:  data.telefono ? data.telefono : "",
         email:  data.email ? data.email : "",
+        padre:  data.padre ? data.padre : "",
+        madre:  data.madre ? data.madre : "",
+
+        
     };
 }
 
@@ -94,11 +103,11 @@ export default {
             // mostrar un loading si hay tiempo
             if (typeof this.$route.params.estudiante_id !== 'undefined'){
                 // console.log();
-                axios.get(`/estudiante/${this.$route.params.estudiante_id}/`)
+                axios.get(`/estudiantes/${this.$route.params.estudiante_id}`)
                 .then((response) => {
-                    _this.estudiante = response.data;
+                    _this.estudiante = response.data.data;
                     // actualiza el header
-                    let nombre =  _this.estudiante.nombre+" "+  _this.estudiante.apellidoPaterno;
+                    let nombre =  _this.estudiante.nombre+" "+  _this.estudiante.apellido;
                     this.$store.dispatch('updateHeader', {
                         title: nombre,
                         breadcrumb: ['Estudiantes', nombre]
@@ -124,7 +133,7 @@ export default {
             this.$refs.formulario_estudiante.validate((valid) => {
                 if (valid) {
                     if (_this.estudiante.id){ // editar estudiante
-                        axios.put(`/estudiante/${this.$route.params.estudiante_id}/`, _this.estudiante)
+                        axios.put(`/estudiantes/${this.$route.params.estudiante_id}`, _this.estudiante)
                         .then((response) => {
                             this.$notify({
                                 title: 'Bien!',
@@ -139,9 +148,9 @@ export default {
                         });
 
                     }else{ // crear estudiante
-                        axios.post(`/estudiante/`, _this.estudiante)
+                        axios.post(`/estudiantes/`, _this.estudiante)
                         .then((response) => {
-                            let data = response.data;
+                            let data = response.data.data;
                             this.$notify({
                                 title: 'Bien!',
                                 message: 'Estudiente creado satisfactoriamente.',

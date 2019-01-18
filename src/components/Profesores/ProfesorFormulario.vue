@@ -85,8 +85,7 @@ export default {
             let _this = this;
             // mostrar un loading si hay tiempo
             if (typeof this.$route.params.profesor_id !== 'undefined'){
-                // console.log();
-                axios.get(`/docente/${this.$route.params.profesor_id}/`)
+                axios.get(`/docentes/${this.$route.params.profesor_id}`)
                 .then((response) => {
                     _this.profesor = response.data;
                     // actualiza el header
@@ -116,7 +115,7 @@ export default {
             this.$refs.formulario_profesor.validate((valid) => {
                 if (valid) {
                     if (_this.profesor.id){ // editar profesor
-                        axios.put(`/docente/${this.$route.params.profesor_id}/`, _this.profesor)
+                        axios.put(`/docentes/${this.$route.params.profesor_id}`, _this.profesor)
                         .then((response) => {
                             this.$notify({
                                 title: 'Bien!',
@@ -131,9 +130,9 @@ export default {
                         });
 
                     }else{ // crear profesor
-                        axios.post(`/docente/`, _this.profesor)
+                        axios.post(`/docentes/`, _this.profesor)
                         .then((response) => {
-                            let data = response.data;
+                            let data = response.data.data;
                             this.$notify({
                                 title: 'Bien!',
                                 message: 'Profesor creado satisfactoriamente.',
