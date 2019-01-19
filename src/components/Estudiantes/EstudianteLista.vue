@@ -23,16 +23,16 @@
                         </el-table-column>
 
                         <el-table-column
-                            label="Apellido Paterno">
+                            label="Padre">
                             <template slot-scope="scope">
-                                {{ scope.row.apellidoPaterno }}
+                                {{ scope.row.padre }}
                             </template>
                         </el-table-column>
 
                         <el-table-column
-                                label="Apellido Materno">
+                                label="Madre">
                             <template slot-scope="scope">
-                                {{ scope.row.apellidoMaterno }}
+                                {{ scope.row.madre }}
                             </template>
                         </el-table-column>
 
@@ -48,13 +48,6 @@
                             label="Fecha de Nacimiento">
                             <template slot-scope="scope">
                                 {{ scope.row.fechaNacimiento }}
-                            </template>
-                        </el-table-column>
-
-                        <el-table-column
-                            label="Correo">
-                            <template slot-scope="scope">
-                                {{ scope.row.email }}
                             </template>
                         </el-table-column>
 
